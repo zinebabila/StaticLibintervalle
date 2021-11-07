@@ -57,3 +57,14 @@ float& intervalle::Tableau::operator[](unsigned int indice)
         cout << e << endl;
     }
 }
+
+void intervalle::Tableau::print() const
+{
+    
+        cout << "[";
+        for (int i = 0; i < this->taille; i++)
+            cout << this->t[i] << ",";
+        cout << "]" << endl;
+    
+
+}

@@ -2,8 +2,10 @@
 namespace intervalle {
 	class Tableau
 	{
-	protected :
+	protected:
 		int taille;
+	private :
+		
 	     float* t;
 	public:
 		Tableau(unsigned int a);
@@ -11,6 +13,7 @@ namespace intervalle {
 		Tableau(const Tableau&t);
 		Tableau& operator=(const Tableau&);
 		float& operator[](unsigned int indice);
+		void print() const;
 	};
 }
 

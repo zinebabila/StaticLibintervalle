@@ -9,7 +9,7 @@ namespace intervalle {
         float max;
     public:
         TableauBorne(unsigned int taille, float m, float ma);
-        float operator[](unsigned int indice) const;
+        float operator[](unsigned int indice) ;
         void  operator()(unsigned int indice,float a);
         void print() const;
     };
