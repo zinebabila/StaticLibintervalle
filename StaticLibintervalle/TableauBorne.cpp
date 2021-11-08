@@ -10,42 +10,48 @@ intervalle::TableauBorne::TableauBorne(unsigned int taille, float m, float ma)
 {
 	if (m < ma) {
 		this->min = m;
-		this->max = ma;
-		this->Tableau::operator[](0)= m;
-		this->Tableau::operator[](taille-1) = ma;
+		this->max = ma;	
 	}
 	else {
 		this->min = ma;
 		this->max = m;
-		this->Tableau::operator[](0) = ma;
-		this->Tableau::operator[](taille - 1) = m;
 	}
-	
-
+	this->Tableau::operator[](0) = m;
+	this->Tableau::operator[](taille - 1) = ma;
 }
 
-float intervalle::TableauBorne::operator[](unsigned int indice) 
+intervalle::TableauBorne::TableauBorne(const TableauBorne&ta)
+	:Tableau(ta)
 {
-	assert(indice >= 0);//debug
-	try//release
-	{
-		if (indice < 0) throw"rang error";
+	this->min = ta.min;
+	this->max = ta.max;
+}
+
+TableauBorne& intervalle::TableauBorne::operator=(const TableauBorne&ta)
+{
+	if (this != &ta) {
+		this -> Tableau::operator=(ta);
+		this->min = ta.min;
+		this->max = ta.max;
+	}
+	return *this;
+}
+
+ float intervalle::TableauBorne::operator[](unsigned int indice)
+{
 		return (this->Tableau::operator[](indice));
-	}
-	catch (char* e) {
-		cout << e << endl;
-	}
 }
 
 void intervalle::TableauBorne::operator()(unsigned int indice, float a)
 {
-	assert(indice > this->taille);
+	assert(a >=this->min&&  a<=this->max );
 	this->Tableau::operator[](indice) = a;
 }
 
 void intervalle::TableauBorne::print() const
 {
 	this->Tableau::print();
+	
 }
 
 

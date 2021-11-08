@@ -4,11 +4,21 @@
 #include <iostream>
 #include "Tableau.h"
 #include "TableauBorne.h"
+using namespace std;
 using namespace intervalle;
 int main()
 {
-    TableauBorne t(5, 5, 2);
-    t.print();
+    TableauBorne t1(5, 5, 2);
+    TableauBorne t2(7, 9, 10);
+    TableauBorne t3(t1);
+    t1.print();
+    t2.print();
+    t1 = t2;
+    t1.print();
+    t1.operator()(1,9.2);
+    t1.print();
+    t3.print();
+
     
 }
 
